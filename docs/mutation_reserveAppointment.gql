@@ -1,0 +1,19 @@
+mutation {
+  reserveAppointment(
+    userName: "@ETPhoneHome"
+    appointmentId: "af0bc6dc-e38d-412f-a083-bbc3001240ce"
+  ){
+        id
+    providerId
+    startTime
+    endTime
+    provider {
+      id
+      name
+      userName
+    }
+    status
+    clientUserName
+    appointmentReservationExpiration
+  }
+}

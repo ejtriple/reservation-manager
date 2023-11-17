@@ -1,0 +1,16 @@
+query {
+  appointmentSlots {
+        id
+    providerId
+    startTime
+    endTime
+    provider {
+      id
+      name
+      userName
+    }
+    status
+    clientUserName
+    
+  }
+}
