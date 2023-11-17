@@ -1,4 +1,4 @@
-namespace Reservations.API;
+namespace Reservations.API.GraphQL.Types;
 
 public class UserType : ObjectType<User>
 {

@@ -4,10 +4,9 @@ using HotChocolate.Language;
 using Microsoft.EntityFrameworkCore;
 using Reservations.API;
 using Reservations.API.GraphQL;
+using Reservations.API.GraphQL.Types;
 using Reservations.API.InputTypes;
 using Reservations.API.Services;
-using Reservations.API.Types;
-using ProviderType = Reservations.API.GraphQL.Types.ObjectTypes.ProviderType;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
 using Reservations.API.Models;
 
-namespace Reservations.API.Types;
+namespace Reservations.API.GraphQL.Types;
 
 public class AppointmentStatusType : EnumType<AppointmentSlotStatus>
 {

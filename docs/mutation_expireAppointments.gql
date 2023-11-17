@@ -1,0 +1,16 @@
+mutation {
+  expireAppointments {
+    id
+    providerId
+    startTime
+    endTime
+    provider {
+      id
+      name
+      userName
+    }
+    status
+    clientUserName
+    appointmentReservationExpiration
+  }
+}

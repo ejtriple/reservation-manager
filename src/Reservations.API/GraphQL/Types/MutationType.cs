@@ -1,7 +1,4 @@
-﻿using Reservations.API.GraphQL;
-using Reservations.API.Types;
-
-namespace Reservations.API;
+﻿namespace Reservations.API.GraphQL.Types;
 
 public class MutationType : ObjectType<Mutation>
 {
