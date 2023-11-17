@@ -1,9 +1,9 @@
 namespace Reservations.API.Models;
 
-    public enum AppointmentSlotStatus
-    {
-        Free,
-        Reserved,
-        Confirmed,
-        Expired
-    }
+public enum AppointmentSlotStatus
+{
+    Free,
+    Reserved,
+    Confirmed,
+    Expired
+}

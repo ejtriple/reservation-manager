@@ -7,13 +7,10 @@ public class DataSeeder
 {
     public static void Initialize(IServiceProvider serviceProvider)
     {
-        using( var context = new ReservationDbContext(serviceProvider.GetRequiredService<DbContextOptions<ReservationDbContext>>()))
+        using (var context =
+               new ReservationDbContext(serviceProvider.GetRequiredService<DbContextOptions<ReservationDbContext>>()))
         {
-
-            if( context.Provider.Any())
-            {
-                return;
-            }
+            if (context.Provider.Any()) return;
 
             var provider1 = new ProviderModel(Guid.NewGuid(), "Dr. Jekyll", "@DJekyll");
             var expiredAppointment = new AppointmentSlotModel(
@@ -35,18 +32,19 @@ public class DataSeeder
             //         new DateTime(2023, 11, 16, 16, 0, 0),
             //         provider1
             //     ));
-            
+
             context.SaveChanges();
         }
     }
 
-    private static void createSlots(DateTime startTime, DateTime endTime, ProviderModel provider, ReservationDbContext context)
+    private static void createSlots(DateTime startTime, DateTime endTime, ProviderModel provider,
+        ReservationDbContext context)
     {
-        TimeSpan interval = TimeSpan.FromMinutes(15);
+        var interval = TimeSpan.FromMinutes(15);
 
-        for (DateTime slotStart = startTime; slotStart < endTime; slotStart += interval)
+        for (var slotStart = startTime; slotStart < endTime; slotStart += interval)
         {
-            DateTime slotEnd = slotStart + interval;
+            var slotEnd = slotStart + interval;
             context.AppointmentSlot.Add(
                 new AppointmentSlotModel(
                     Guid.NewGuid(),

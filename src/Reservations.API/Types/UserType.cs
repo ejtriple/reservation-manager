@@ -1,5 +1,3 @@
-using HotChocolate.Types;
-
 namespace Reservations.API;
 
 public class UserType : ObjectType<User>
@@ -14,5 +12,7 @@ public class UserType : ObjectType<User>
     private static Task<User> ResolveUserById(
         string id,
         UserRepository userRepository)
-        => userRepository.GetUserByIdAsync(id);
+    {
+        return userRepository.GetUserByIdAsync(id);
+    }
 }

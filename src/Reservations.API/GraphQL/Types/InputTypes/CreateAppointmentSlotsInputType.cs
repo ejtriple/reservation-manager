@@ -1,6 +1,4 @@
-using HotChocolate.Types;
 using Reservations.API.Models;
-using Reservations.API.Types;
 
 namespace Reservations.API.InputTypes;
 
@@ -16,5 +14,4 @@ public class CreateAppointmentSlotsInputType : InputObjectType<AppointmentSlotIn
         descriptor.Field(t => t.StartTime).Type<NonNullType<DateTimeType>>();
         descriptor.Field(t => t.EndTime).Type<NonNullType<DateTimeType>>();
     }
-    
 }

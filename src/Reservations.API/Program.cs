@@ -1,8 +1,8 @@
 using HotChocolate.Execution;
 using HotChocolate.Execution.Instrumentation;
 using HotChocolate.Language;
-using Reservations.API;
 using Microsoft.EntityFrameworkCore;
+using Reservations.API;
 using Reservations.API.GraphQL;
 using Reservations.API.InputTypes;
 using Reservations.API.Services;
@@ -12,7 +12,7 @@ using ProviderType = Reservations.API.GraphQL.Types.ObjectTypes.ProviderType;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddPooledDbContextFactory<ReservationDbContext>(options => options.UseInMemoryDatabase(databaseName: "Reservations"));
+    .AddPooledDbContextFactory<ReservationDbContext>(options => options.UseInMemoryDatabase("Reservations"));
 
 builder.Services
     .AddSingleton<UserRepository>();
@@ -34,12 +34,14 @@ builder.Services
     .AddDiagnosticEventListener<Log>();
 
 var app = builder.Build();
-using (var scope = ((IApplicationBuilder)app).ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+using (var scope = ((IApplicationBuilder)app).ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+       .CreateScope())
 {
     var services = scope.ServiceProvider;
 
     DataSeeder.Initialize(services);
 }
+
 app.MapGraphQL();
 app.Run();
 
@@ -50,12 +52,8 @@ public class Log : ExecutionDiagnosticEventListener
         Console.WriteLine(context.Request.Query?.ToString());
 
         if (context.Request.VariableValues is not null)
-        {
             foreach (var variable in context.Request.VariableValues)
-            {
                 Console.WriteLine($"{variable.Key}: {((IValueNode)variable.Value!).ToString()}");
-            }
-        }
 
         return base.ExecuteRequest(context);
     }

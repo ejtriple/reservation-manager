@@ -1,5 +1,4 @@
-﻿using HotChocolate.Types;
-using Reservations.API.GraphQL;
+﻿using Reservations.API.GraphQL;
 using Reservations.API.Types;
 
 namespace Reservations.API;
@@ -13,7 +12,7 @@ public class QueryType : ObjectType<Query>
         //     .Field("me")
         //     .Type<NonNullType<UserType>>()
         //     .Resolve(ctx => ctx.Service<UserRepository>().GetUserByIdAsync("1"));
-        
+
         //Appointments
         descriptor
             .Field(f => f.GetProviders())

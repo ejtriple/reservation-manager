@@ -5,10 +5,14 @@ public class UserRepository
     private readonly Dictionary<string, User> _users;
 
     public UserRepository()
-        => _users = CreateUsers().ToDictionary(t => t.Id);
+    {
+        _users = CreateUsers().ToDictionary(t => t.Id);
+    }
 
     public Task<User> GetUserByIdAsync(string id)
-        => Task.FromResult(_users[id]);
+    {
+        return Task.FromResult(_users[id]);
+    }
 
     private static IEnumerable<User> CreateUsers()
     {

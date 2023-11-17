@@ -18,10 +18,9 @@ public class Query
     {
         return await _providerService.GetProviders();
     }
-    
+
     public async Task<IEnumerable<AppointmentSlotModel>> GetAppointmentSlots()
     {
         return await _providerService.GetAppointmentSlots();
     }
 }
-

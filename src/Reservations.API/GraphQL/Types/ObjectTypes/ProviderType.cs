@@ -15,5 +15,7 @@ public class ProviderType : ObjectType<ProviderModel>
     private static Task<User> ResolveUserById(
         string id,
         UserRepository userRepository)
-        => userRepository.GetUserByIdAsync(id);
+    {
+        return userRepository.GetUserByIdAsync(id);
+    }
 }
